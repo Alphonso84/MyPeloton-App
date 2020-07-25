@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var workouts = Workouts()
     var body: some View {
-        Text("Hello, world!").padding()
+        
+        Text("Hello World")
+            
+        }
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

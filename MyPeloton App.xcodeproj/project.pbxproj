@@ -11,6 +11,9 @@
 		D029769424CCE18700D48AA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D029769324CCE18700D48AA0 /* ContentView.swift */; };
 		D029769624CCE18900D48AA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D029769524CCE18900D48AA0 /* Assets.xcassets */; };
 		D029769924CCE18900D48AA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D029769824CCE18900D48AA0 /* Preview Assets.xcassets */; };
+		D02976A124CCE1D300D48AA0 /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02976A024CCE1D300D48AA0 /* WorkoutModel.swift */; };
+		D02976A324CCE21E00D48AA0 /* WorkoutData.json in Resources */ = {isa = PBXBuildFile; fileRef = D02976A224CCE21E00D48AA0 /* WorkoutData.json */; };
+		D02976A524CCE70300D48AA0 /* WorkoutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02976A424CCE70300D48AA0 /* WorkoutRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		D029769524CCE18900D48AA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D029769824CCE18900D48AA0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D029769A24CCE18900D48AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D02976A024CCE1D300D48AA0 /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
+		D02976A224CCE21E00D48AA0 /* WorkoutData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = WorkoutData.json; path = ../../../../../Downloads/WorkoutData.json; sourceTree = "<group>"; };
+		D02976A424CCE70300D48AA0 /* WorkoutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 			children = (
 				D029769124CCE18700D48AA0 /* MyPeloton_AppApp.swift */,
 				D029769324CCE18700D48AA0 /* ContentView.swift */,
+				D02976A424CCE70300D48AA0 /* WorkoutRowView.swift */,
+				D02976A024CCE1D300D48AA0 /* WorkoutModel.swift */,
+				D02976A224CCE21E00D48AA0 /* WorkoutData.json */,
 				D029769524CCE18900D48AA0 /* Assets.xcassets */,
 				D029769A24CCE18900D48AA0 /* Info.plist */,
 				D029769724CCE18900D48AA0 /* Preview Content */,
@@ -128,6 +137,7 @@
 			files = (
 				D029769924CCE18900D48AA0 /* Preview Assets.xcassets in Resources */,
 				D029769624CCE18900D48AA0 /* Assets.xcassets in Resources */,
+				D02976A324CCE21E00D48AA0 /* WorkoutData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +149,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D029769424CCE18700D48AA0 /* ContentView.swift in Sources */,
+				D02976A524CCE70300D48AA0 /* WorkoutRowView.swift in Sources */,
+				D02976A124CCE1D300D48AA0 /* WorkoutModel.swift in Sources */,
 				D029769224CCE18700D48AA0 /* MyPeloton_AppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
