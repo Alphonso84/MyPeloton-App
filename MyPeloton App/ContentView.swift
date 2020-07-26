@@ -12,8 +12,8 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            Text("Hello World")
-            Text("Data")
+            Text("Most Recent Workout").font(.largeTitle)
+            Text("You burned a total of / calories")
         }.onChange(of: workouts) { value in
             decodeJSON()
         }
@@ -28,8 +28,17 @@ struct ContentView: View {
             let jsonDecoder = JSONDecoder()
             let jsonData = try  jsonDecoder.decode(Workouts.self, from: workoutData)
             workouts = jsonData
-            print(workouts.last)
+
+            let cadence = "\(workouts[316].avgCadenceRPM)"
+            let output = "\(workouts[316].totalOutput)"
+            print(workouts[316].workoutTimestamp)
+            print("Your Instructor for this ride was \(workouts[316].instructorName)")
+            print("You generated a total of \(output.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) kiloJoules during this ride")
+            print("You burned a total of \(workouts[316].caloriesBurned) calories")
             
+            print("You sustained a cadence of \(cadence.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) RPM During this ride")
+           
+           
         } catch {
           print(error)
         }
