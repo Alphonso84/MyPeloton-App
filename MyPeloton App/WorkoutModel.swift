@@ -8,7 +8,11 @@
 import Foundation
 
 // MARK: - Workout
-struct Workout: Codable {
+struct Workout: Codable, Equatable {
+    static func == (lhs: Workout, rhs: Workout) -> Bool {
+        return true
+    }
+    
     let workoutTimestamp: String
     let liveOnDemand: LiveOnDemand
     let instructorName: String
@@ -22,7 +26,7 @@ struct Workout: Codable {
     let caloriesBurned: Int
     let avgHeartrate: AvgHeartrate
     let avgIncline, avgPaceMinMi: String
-    let id: UUID
+    
     enum CodingKeys: String, CodingKey {
         case workoutTimestamp = "Workout Timestamp"
         case liveOnDemand = "Live/On-Demand"
@@ -42,7 +46,7 @@ struct Workout: Codable {
         case avgHeartrate = "Avg. Heartrate"
         case avgIncline = "Avg. Incline"
         case avgPaceMinMi = "Avg. Pace (min/mi)"
-        case id = "UUID"
+
     }
 }
 

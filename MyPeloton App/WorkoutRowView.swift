@@ -10,7 +10,6 @@ import SwiftUI
 
 
 struct WorkoutRowView: View {
-    @State var workouts = Workouts()
     var body: some View {
         HStack {
             Image(systemName:"person.fill").aspectRatio(contentMode: .fill)
@@ -22,7 +21,9 @@ struct WorkoutRowView: View {
             }
         }
     }
+
 }
+
 
 struct WorkoutRowView_Previews: PreviewProvider {
     static var previews: some View {
