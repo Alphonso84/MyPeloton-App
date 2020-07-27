@@ -27,14 +27,14 @@ struct ContentView: View {
         do {
             let jsonDecoder = JSONDecoder()
             let jsonData = try  jsonDecoder.decode(Workouts.self, from: workoutData)
-            workouts = jsonData
+           // workouts = jsonData
 
-            let cadence = "\(workouts[316].avgCadenceRPM)"
-            let output = "\(workouts[316].totalOutput)"
-            print(workouts[316].workoutTimestamp)
-            print("Your Instructor for this ride was \(workouts[316].instructorName)")
+            let cadence = "\(jsonData[318].avgCadenceRPM)"
+            let output = "\(jsonData[318].totalOutput)"
+            print("You took this course on \(jsonData[318].workoutTimestamp)")
+            print("Your Instructor for this ride was \(jsonData[318].instructorName)")
             print("You generated a total of \(output.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) kiloJoules during this ride")
-            print("You burned a total of \(workouts[316].caloriesBurned) calories")
+            print("You burned a total of \(jsonData[318].caloriesBurned) calories")
             
             print("You sustained a cadence of \(cadence.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) RPM During this ride")
            
