@@ -10,12 +10,13 @@ import SwiftUI
 
 
 struct WorkoutRowView: View {
+    
     var body: some View {
         HStack {
             Image(systemName:"person.fill").aspectRatio(contentMode: .fill)
             
             VStack(alignment:.leading) {
-                Text("Instructor Name").font(.title)
+                Text("myWorkouts[318].instructorName").font(.title)
                 Text("Class Name").foregroundColor(.gray)
                 
             }

@@ -9,12 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     @State var workouts = Workouts()
+    @Binding var myWorkouts: Workouts
+    
     var body: some View {
-        
+        NavigationView {
         VStack {
             Text("Most Recent Workout").font(.largeTitle)
-            Text("You burned a total of / calories")
-        }.onChange(of: workouts) { value in
+            Text("You burned a total of \(myWorkouts[299].caloriesBurned) calories")
+         }
+        }.onAppear {
             decodeJSON()
         }
     }
@@ -27,7 +30,7 @@ struct ContentView: View {
         do {
             let jsonDecoder = JSONDecoder()
             let jsonData = try  jsonDecoder.decode(Workouts.self, from: workoutData)
-           // workouts = jsonData
+            workouts = jsonData
 
             let cadence = "\(jsonData[318].avgCadenceRPM)"
             let output = "\(jsonData[318].totalOutput)"
@@ -67,6 +70,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(myWorkouts: .constant(Workouts()))
     }
 }

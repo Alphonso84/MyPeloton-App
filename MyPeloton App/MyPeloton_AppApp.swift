@@ -11,7 +11,7 @@ import SwiftUI
 struct MyPeloton_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(myWorkouts: .constant(Workouts()))
         }
     }
 }
