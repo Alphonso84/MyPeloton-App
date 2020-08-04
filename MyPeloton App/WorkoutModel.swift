@@ -8,6 +8,13 @@
 import Foundation
 
 // MARK: - Workout
+/* TODO: - Find method to
+    1) Authenticate
+    2) Download CSV file
+    3) Convert to JSON
+    https://api.onepeloton.com/api/user/4bb1b0474af0487c9fe211aac7aa0d61/workout_history_json?timezone=America/Detroit
+ */
+
 struct Workout: Codable, Equatable {
     static func == (lhs: Workout, rhs: Workout) -> Bool {
         return true

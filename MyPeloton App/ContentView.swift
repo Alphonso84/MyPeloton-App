@@ -14,13 +14,15 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
         VStack {
-            Text("Most Recent Workout").font(.largeTitle)
-            Text("You burned a total of \(myWorkouts[299].caloriesBurned) calories")
-         }
-        }.onAppear {
-            decodeJSON()
+            Button(action:{
+                decodeJSON()
+            }, label: {
+                Text("Get Peloton WorkOut Data")
+            })
+          }
         }
-    }
+      }
+    
     
 // MARK: Parse JSON Data into Model Object
     func decodeJSON() {
@@ -31,13 +33,18 @@ struct ContentView: View {
             let jsonDecoder = JSONDecoder()
             let jsonData = try  jsonDecoder.decode(Workouts.self, from: workoutData)
             workouts = jsonData
+            //Last Workout is always CoolDown
+            let mostRecentWorkout = workouts[workouts.count - 2]
+            let firstWorkout = workouts.first
 
-            let cadence = "\(jsonData[318].avgCadenceRPM)"
-            let output = "\(jsonData[318].totalOutput)"
-            print("You took this course on \(jsonData[318].workoutTimestamp)")
-            print("Your Instructor for this ride was \(jsonData[318].instructorName)")
+            let cadence = "\(mostRecentWorkout.avgCadenceRPM)"
+            let output = "\(mostRecentWorkout.totalOutput)"
+            print("Your very first workout was \(firstWorkout?.title)")
+            print("You took this course on \(mostRecentWorkout.workoutTimestamp)")
+            
+            print("Your Instructor for this ride was \(mostRecentWorkout.instructorName)")
             print("You generated a total of \(output.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) kiloJoules during this ride")
-            print("You burned a total of \(jsonData[318].caloriesBurned) calories")
+            print("You burned a total of \(mostRecentWorkout.caloriesBurned) calories")
             
             print("You sustained a cadence of \(cadence.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) RPM During this ride")
            
