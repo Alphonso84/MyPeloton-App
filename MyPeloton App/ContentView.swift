@@ -9,19 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     @State var workouts = Workouts()
-    @Binding var myWorkouts: Workouts
     
     var body: some View {
         NavigationView {
-        VStack {
-            Button(action:{
-                decodeJSON()
-            }, label: {
-                Text("Get Peloton WorkOut Data")
-            })
-          }
+            VStack {
+                NavigationLink(
+                    destination: WorkoutRowView(workouts: $workouts),
+                    label: {
+                        Text("Get Peloton WorkOut Data")
+                    }).onAppear {
+                        decodeJSON()
+                }
+            }
         }
-      }
+    }
     
     
 // MARK: Parse JSON Data into Model Object
@@ -34,21 +35,21 @@ struct ContentView: View {
             let jsonData = try  jsonDecoder.decode(Workouts.self, from: workoutData)
             workouts = jsonData
             //Last Workout is always CoolDown
-            let mostRecentWorkout = workouts[workouts.count - 2]
-            let firstWorkout = workouts.first
-
-            let cadence = "\(mostRecentWorkout.avgCadenceRPM)"
-            let output = "\(mostRecentWorkout.totalOutput)"
-            print("Your very first workout was \(firstWorkout?.title)")
-            print("You took this course on \(mostRecentWorkout.workoutTimestamp)")
-            
-            print("Your Instructor for this ride was \(mostRecentWorkout.instructorName)")
-            print("You generated a total of \(output.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) kiloJoules during this ride")
-            print("You burned a total of \(mostRecentWorkout.caloriesBurned) calories")
-            
-            print("You sustained a cadence of \(cadence.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) RPM During this ride")
-           
-           
+//            let mostRecentWorkout = workouts[workouts.count - 2]
+//            let firstWorkout = workouts.first
+//
+//            let cadence = "\(mostRecentWorkout.avgCadenceRPM)"
+//            let output = "\(mostRecentWorkout.totalOutput)"
+//            print("Your very first workout was \(firstWorkout?.title)")
+//            print("You took this course on \(mostRecentWorkout.workoutTimestamp)")
+//
+//            print("Your Instructor for this ride was \(mostRecentWorkout.instructorName)")
+//            print("You generated a total of \(output.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) kiloJoules during this ride")
+//            print("You burned a total of \(mostRecentWorkout.caloriesBurned) calories")
+//
+//            print("You sustained a cadence of \(cadence.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) RPM During this ride")
+//
+//
         } catch {
           print(error)
         }
@@ -77,6 +78,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(myWorkouts: .constant(Workouts()))
+        ContentView()
     }
 }
