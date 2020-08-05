@@ -14,19 +14,22 @@ struct WorkoutRowView: View {
     @Binding var workouts: Workouts
     var workoutNumberSelection = 347
     var body: some View {
+        
+        List(workouts, id: \.instructorName) { workout in
         HStack {
             Image(systemName:"person.fill").aspectRatio(contentMode: .fill)
             
             VStack(alignment:.leading) {
-                Text("\(workouts[workoutNumberSelection].instructorName)").font(.title)
-                Text("\(workouts[workoutNumberSelection].title)").foregroundColor(.gray)
-                Text("\(workouts[workoutNumberSelection].caloriesBurned) calories burned")
+                Text("\(workout.instructorName)").font(.title)
+                Text("\(workout.title)").foregroundColor(.gray)
+                Text("\(workout.caloriesBurned) calories burned")
                     .foregroundColor(.gray)
+                Text("\(workout.workoutTimestamp)")
                 
             }
         }
-    }
-
+     }
+  }
 }
 
 

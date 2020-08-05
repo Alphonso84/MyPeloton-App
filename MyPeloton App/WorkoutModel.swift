@@ -15,11 +15,11 @@ import Foundation
     https://api.onepeloton.com/api/user/4bb1b0474af0487c9fe211aac7aa0d61/workout_history_json?timezone=America/Detroit
  */
 
-struct Workout: Codable, Equatable {
+struct Workout: Codable, Equatable, Identifiable {
     static func == (lhs: Workout, rhs: Workout) -> Bool {
         return true
     }
-    
+    var id: UUID?
     let workoutTimestamp: String
     let liveOnDemand: LiveOnDemand
     let instructorName: String
