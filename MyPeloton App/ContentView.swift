@@ -9,28 +9,42 @@ import SwiftUI
 
 struct ContentView: View {
     @State var workouts = Workouts()
-    
     var body: some View {
-        Text("My Peloton Workouts").onAppear {
-            decodeJSON()
-        }.font(.largeTitle)
-        List(workouts, id: \.workoutTimestamp) { workout in
-            HStack {
-                Image("\(workoutImage(instructorName: workout.instructorName))").resizable().frame(width: 60, height: 70).cornerRadius(25)
-                
-                VStack(alignment:.leading) {
-                    Text("\(workout.instructorName)").font(.title)
-                    Text("\(workout.fitnessDiscipline.rawValue)").foregroundColor(.gray)
-                    Text("\(workout.title)").foregroundColor(.gray)
-                    Text("\(workout.caloriesBurned) calories burned").foregroundColor(.gray)
-                    //Text("\(AvgCadenceRPM(from: workout.totalOutput as! Decoder)) ")
-                    Text("\(workout.workoutTimestamp)")
-                        .foregroundColor(.blue)
+        
+        NavigationView {
+            List(workouts, id: \.workoutTimestamp) { workout in
+                ZStack(alignment: .leading) {
+                    HStack {
+                        Image("\(workoutImage(instructorName: workout.instructorName))")
+                            .resizable()
+                            .frame(width: 59, height: 70)
+                            .cornerRadius(25)
+                        VStack(alignment:.leading) {
+                            Text("\(workout.instructorName)")
+                                .font(.title)
+                            Text("\(workout.fitnessDiscipline.rawValue)")
+                                .foregroundColor(.gray)
+                            Text("\(workout.title)")
+                                .foregroundColor(.gray)
+                                .font(.subheadline)
+                            Text("\(workout.workoutTimestamp)")
+                                .foregroundColor(.blue)
+                                .font(.subheadline)
+                        }
+                        .navigationBarTitle("Peloton Workouts", displayMode: .inline)
+                    }
                     
+                    NavigationLink(
+                        destination: WorkoutChartView(),
+                        label: {})
                 }
             }
-        }
+            
+        }.onAppear(perform: {
+            decodeJSON()
+        })
     }
+    
     
     func workoutImage(instructorName:String) ->String {
         var imageString = String()
@@ -59,8 +73,7 @@ struct ContentView: View {
     // MARK: Read Downloaded File And Return Data
     private func readLocalFile(forName name: String) -> Data? {
         do {
-            if let bundlePath = Bundle.main.path(forResource: name,
-                                                 ofType: "json"),
+            if let bundlePath = Bundle.main.path(forResource: name, ofType: "json"),
                let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
                 return jsonData
             }
@@ -71,11 +84,6 @@ struct ContentView: View {
         return nil
     }
 }
-
-
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
