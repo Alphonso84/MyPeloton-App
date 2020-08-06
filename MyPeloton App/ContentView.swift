@@ -11,24 +11,39 @@ struct ContentView: View {
     @State var workouts = Workouts()
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Image("Peloton").cornerRadius(15)
-                NavigationLink(
-                    destination: WorkoutRowView(workouts: $workouts),
-                    label: {
-                        Text("Get Peloton WorkOut Data")
-                    }).onAppear {
-                        decodeJSON()
-                    }.foregroundColor(.red)
+        Text("My Peloton Workouts").onAppear {
+            decodeJSON()
+        }.font(.largeTitle)
+        List(workouts, id: \.workoutTimestamp) { workout in
+            HStack {
+                Image("\(workoutImage(instructorName: workout.instructorName))").resizable().frame(width: 60, height: 70).cornerRadius(25)
+                
+                VStack(alignment:.leading) {
+                    Text("\(workout.instructorName)").font(.title)
+                    Text("\(workout.fitnessDiscipline.rawValue)").foregroundColor(.gray)
+                    Text("\(workout.title)").foregroundColor(.gray)
+                    Text("\(workout.caloriesBurned) calories burned").foregroundColor(.gray)
+                    //Text("\(AvgCadenceRPM(from: workout.totalOutput as! Decoder)) ")
+                    Text("\(workout.workoutTimestamp)")
+                        .foregroundColor(.blue)
+                    
+                }
             }
         }
     }
     
+    func workoutImage(instructorName:String) ->String {
+        var imageString = String()
+        if instructorName.isEmpty {
+            imageString = "Peloton"
+        } else {
+            imageString = instructorName
+        }
+        return imageString
+    }
     
     // MARK: Parse JSON Data into Model Object
     func decodeJSON() {
-        
         guard let workoutData = readLocalFile(forName: "WorkoutData") else { return }
         
         do {
