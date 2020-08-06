@@ -15,7 +15,7 @@ import Foundation
     https://api.onepeloton.com/api/user/4bb1b0474af0487c9fe211aac7aa0d61/workout_history_json?timezone=America/Detroit
  */
 
-struct Workout: Codable, Equatable, Identifiable {
+struct Workout: Codable, Equatable, Identifiable, Hashable {
     static func == (lhs: Workout, rhs: Workout) -> Bool {
         return true
     }
@@ -57,7 +57,7 @@ struct Workout: Codable, Equatable, Identifiable {
     }
 }
 
-enum AvgCadenceRPM: Codable {
+enum AvgCadenceRPM: Codable, Hashable {
     case integer(Int)
     case string(String)
 
@@ -85,7 +85,7 @@ enum AvgCadenceRPM: Codable {
     }
 }
 
-enum AvgHeartrate: Codable {
+enum AvgHeartrate: Codable, Hashable {
     case double(Double)
     case string(String)
 
@@ -129,3 +129,4 @@ enum LiveOnDemand: String, Codable {
 }
 
 typealias Workouts = [Workout]
+typealias MyWorkout = Workout

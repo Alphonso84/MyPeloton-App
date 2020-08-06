@@ -9,16 +9,27 @@ import SwiftUI
 
 struct ContentView: View {
     @State var workouts = Workouts()
+    @State var pickerSelectedItem = 0
     var body: some View {
         
         NavigationView {
+            VStack {
+            Picker(selection: $pickerSelectedItem, label: Text(""), content: /*@START_MENU_TOKEN@*/{
+                Text("20 min").tag(0)
+                Text("30 min").tag(1)
+                Text("45 min").tag(2)
+                Text("60 min").tag(3)
+                Text("90 min").tag(4)
+            }/*@END_MENU_TOKEN@*/)
+            .padding(.top, 10)
+            .pickerStyle(SegmentedPickerStyle())
             List(workouts, id: \.workoutTimestamp) { workout in
                 ZStack(alignment: .leading) {
                     HStack {
                         Image("\(workoutImage(instructorName: workout.instructorName))")
                             .resizable()
                             .frame(width: 59, height: 70)
-                            .cornerRadius(25)
+                            .cornerRadius(40)
                         VStack(alignment:.leading) {
                             Text("\(workout.instructorName)")
                                 .font(.title)
@@ -31,7 +42,6 @@ struct ContentView: View {
                                 .foregroundColor(.blue)
                                 .font(.subheadline)
                         }
-                        .navigationBarTitle("Peloton Workouts", displayMode: .inline)
                     }
                     
                     NavigationLink(
@@ -39,10 +49,15 @@ struct ContentView: View {
                         label: {})
                 }
             }
-            
+            .navigationBarTitle("Peloton Workouts", displayMode: .inline)
+            .navigationBarItems(leading: Image("Peloton")
+                                    .resizable()
+                                    .cornerRadius(15)
+                                    .frame(width: 35, height: 35, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/))
         }.onAppear(perform: {
             decodeJSON()
         })
+    }
     }
     
     
@@ -88,5 +103,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice("iPhone SE (2nd generation)")
     }
 }
