@@ -13,19 +13,20 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Image("Peloton").cornerRadius(15)
                 NavigationLink(
                     destination: WorkoutRowView(workouts: $workouts),
                     label: {
                         Text("Get Peloton WorkOut Data")
                     }).onAppear {
                         decodeJSON()
-                }
+                    }.foregroundColor(.red)
             }
         }
     }
     
     
-// MARK: Parse JSON Data into Model Object
+    // MARK: Parse JSON Data into Model Object
     func decodeJSON() {
         
         guard let workoutData = readLocalFile(forName: "WorkoutData") else { return }
@@ -34,28 +35,13 @@ struct ContentView: View {
             let jsonDecoder = JSONDecoder()
             let jsonData = try  jsonDecoder.decode(Workouts.self, from: workoutData)
             workouts = jsonData
-            //Last Workout is always CoolDown
-//            let mostRecentWorkout = workouts[workouts.count - 2]
-//            let firstWorkout = workouts.first
-//
-//            let cadence = "\(mostRecentWorkout.avgCadenceRPM)"
-//            let output = "\(mostRecentWorkout.totalOutput)"
-//            print("Your very first workout was \(firstWorkout?.title)")
-//            print("You took this course on \(mostRecentWorkout.workoutTimestamp)")
-//
-//            print("Your Instructor for this ride was \(mostRecentWorkout.instructorName)")
-//            print("You generated a total of \(output.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) kiloJoules during this ride")
-//            print("You burned a total of \(mostRecentWorkout.caloriesBurned) calories")
-//
-//            print("You sustained a cadence of \(cadence.replacingOccurrences(of: "integer", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")) RPM During this ride")
-//
-//
+            print(jsonData)
         } catch {
-          print(error)
+            print(error)
         }
     }
-
-// MARK: Read Downloaded File And Return Data
+    
+    // MARK: Read Downloaded File And Return Data
     private func readLocalFile(forName name: String) -> Data? {
         do {
             if let bundlePath = Bundle.main.path(forResource: name,

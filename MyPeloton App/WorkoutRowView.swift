@@ -17,13 +17,14 @@ struct WorkoutRowView: View {
         
         List(workouts, id: \.workoutTimestamp) { workout in
         HStack {
-            Image("\(workout.instructorName)").resizable().frame(width: 50, height: 70)
+            Image("\(workoutImage(instructorName: workout.instructorName))").resizable().frame(width: 50, height: 70)
             
             VStack(alignment:.leading) {
                 Text("\(workout.instructorName)").font(.title)
                 Text("\(workout.fitnessDiscipline.rawValue)").foregroundColor(.gray)
                 Text("\(workout.title)").foregroundColor(.gray)
                 Text("\(workout.caloriesBurned) calories burned").foregroundColor(.gray)
+                //Text("\(AvgCadenceRPM(from: workout.totalOutput as! Decoder)) ")
                 Text("\(workout.workoutTimestamp)")
                     .foregroundColor(.blue)
                 
@@ -31,6 +32,16 @@ struct WorkoutRowView: View {
         }
      }
   }
+    
+    func workoutImage(instructorName:String) ->String {
+        var imageString = String()
+        if instructorName.isEmpty {
+            imageString = "Peloton"
+        } else {
+            imageString = instructorName
+        }
+        return imageString
+    }
 }
 
 
