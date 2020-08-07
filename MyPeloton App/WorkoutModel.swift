@@ -58,16 +58,16 @@ struct Workout: Codable, Equatable, Identifiable, Hashable {
 }
 
 enum AvgCadenceRPM: Codable, Hashable {
-    case integer(Int)
-    case string(String)
+    case integer(Double)
+    case string(String?)
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let x = try? container.decode(Int.self) {
+        if let x = try? container.decode(Double.self) {
             self = .integer(x)
             return
         }
-        if let x = try? container.decode(String.self) {
+        if let x = try? container.decode(String?.self) {
             self = .string(x)
             return
         }
@@ -87,7 +87,7 @@ enum AvgCadenceRPM: Codable, Hashable {
 
 enum AvgHeartrate: Codable, Hashable {
     case double(Double)
-    case string(String)
+    case string(String?)
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -95,7 +95,7 @@ enum AvgHeartrate: Codable, Hashable {
             self = .double(x)
             return
         }
-        if let x = try? container.decode(String.self) {
+        if let x = try? container.decode(String?.self) {
             self = .string(x)
             return
         }

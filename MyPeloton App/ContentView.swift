@@ -14,6 +14,10 @@ struct ContentView: View {
         
         NavigationView {
             VStack {
+                PersonalBestView(instructorName: "\(getBestWorkOutFromArray(array: workouts).0)", classTitle: "\(getBestWorkOutTitleFromArray(array:workouts))", caloriesBurned: getBestWorkOutFromArray(array: workouts).1)
+                    .onAppear {
+                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/
+                    }
                 Picker(selection: $pickerSelectedItem, label: Text(""), content: /*@START_MENU_TOKEN@*/{
                     Text("All").tag(0)
                     Text("20 min").tag(1)
@@ -34,8 +38,8 @@ struct ContentView: View {
                                             .resizable()
                                             .cornerRadius(15)
                                             .frame(width: 35, height: 35, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/))
-                    
-                    
+                
+                
             }.onAppear(perform: {
                 decodeJSON()
                 workouts = getWorkoutArrayForTime(pickerSelection: pickerSelectedItem)
@@ -67,8 +71,34 @@ struct ContentView: View {
         }
         return titleString
     }
-   
+    
     //MARK: Workout Filter Methods
+    
+    func getBestWorkOutTitleFromArray(array:Workouts) -> String{
+        var bestWorkoutInfo = Int()
+        var bestWorkoutTitle = String()
+        
+        for singleWorkout in array {
+            if singleWorkout.caloriesBurned > bestWorkoutInfo {
+                bestWorkoutInfo = singleWorkout.caloriesBurned
+                bestWorkoutTitle = singleWorkout.title
+            }
+        }
+        return bestWorkoutTitle
+    }
+    
+    func getBestWorkOutFromArray(array:Workouts) -> (String,Int){
+        var bestWorkoutInfo = ("",0)
+        
+        for singleWorkout in array {
+            
+            if singleWorkout.caloriesBurned > bestWorkoutInfo.1 {
+                bestWorkoutInfo.1 = singleWorkout.caloriesBurned
+                bestWorkoutInfo.0 = singleWorkout.instructorName
+            }
+        }
+        return bestWorkoutInfo
+    }
     
     func getWorkoutArrayForTime(pickerSelection: Int) -> Workouts {
         workouts.removeAll()
@@ -78,7 +108,7 @@ struct ContentView: View {
         for workout in workouts {
             if  pickerSelectedItem == 0 {
                 newWorkoutArray.append(workout)
-               
+                
             }
             if  pickerSelectedItem == 1 && workout.title.contains("20 min") {
                 newWorkoutArray.append(workout)

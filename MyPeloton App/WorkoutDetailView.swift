@@ -8,21 +8,27 @@
 import SwiftUI
 
 struct WorkoutDetailView: View {
-   // @State var workout: Workout
+    @State var workout: Workout
     var body: some View {
         VStack {
-       // Image("\(workout.instructorName)")
-        Image("Matt Wilpers")
-            .resizable()
-            .frame(width: 150, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Image("\(workout.instructorName)")
+                .resizable()
+                .frame(width: 150, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            //        Image("Matt Wilpers")
+            //            .resizable()
+            //            .frame(width: 150, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            //Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            //Text("Average Speed MPH \(workout)")
+            Text("Average Resistance \(workout.avgResistance)")
+            Text("Calories Burned \(workout.caloriesBurned)")
         }
         
     }
 }
 
-struct WorkoutDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        WorkoutDetailView()
-    }
-}
+//
+//struct WorkoutDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WorkoutDetailView()
+//    }
+//}

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct WorkoutChartView: View {
-   // @State var pickerSelectedItem = 0
+    @State var pickerSelectedItem = 0
+    var workouts = Workouts()
     var body: some View {
         ZStack {
             
@@ -16,39 +17,30 @@ struct WorkoutChartView: View {
                 Text("Weekly Calories")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
+                Picker(selection: $pickerSelectedItem, label: Text(""), content: /*@START_MENU_TOKEN@*/{
+                    Text("All").tag(0)
+                    Text("15 min").tag(1)
+                    Text("20 min").tag(2)
+                    Text("30 min").tag(3)
+                    Text("45 min").tag(4)
+                    Text("60 min").tag(5)
+                    Text("90 min").tag(6)
+                }/*@END_MENU_TOKEN@*/)
+                .pickerStyle(SegmentedPickerStyle())
                 
                 HStack (spacing:10) {
-                    BarView(text: "S", value: 45)
-                    BarView(text: "M", value: 120)
-                    BarView(text: "T", value: 60)
-                    BarView(text: "W", value: 174)
-                    BarView(text: "T", value: 190)
-                    BarView(text: "F", value: 35)
-                    BarView(text: "S", value: 90)
+                    WorkoutBarView(text: "15", totalWorkout:CGFloat(workouts.count), numOfWorkout: 45)
+                    WorkoutBarView(text: "20", totalWorkout: CGFloat(workouts.count), numOfWorkout: 120)
+                    WorkoutBarView(text: "30", totalWorkout: CGFloat(workouts.count), numOfWorkout: 60)
+                    WorkoutBarView(text: "45", totalWorkout: CGFloat(workouts.count), numOfWorkout: 174)
+                    WorkoutBarView(text: "60", totalWorkout: CGFloat(workouts.count), numOfWorkout: 190)
+                    WorkoutBarView(text: "90", totalWorkout: CGFloat(workouts.count), numOfWorkout: 35)
+                    WorkoutBarView(text: "S", totalWorkout: CGFloat(workouts.count), numOfWorkout: 90)
                   
                 }
-                
+                .animation(.default)
             }
         }
-    }
-}
-
-struct BarView: View {
-    var text: String
-    var value: CGFloat
-    var body: some View {
-        VStack {
-            
-        ZStack(alignment:.bottom) {
-            Capsule().frame(width: 0, height: 200)
-                .foregroundColor(.secondary)
-            
-            Capsule().frame(width: 30, height: value)
-                .foregroundColor(.red)
-        }
-            Text("\(text)")
-        }
-        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
     }
 }
 

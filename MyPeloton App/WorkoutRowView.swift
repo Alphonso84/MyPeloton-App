@@ -38,7 +38,7 @@ struct WorkoutRowView: View {
                 .shadow(radius: 10)
                 
                 NavigationLink(
-                    destination: WorkoutDetailView(),
+                    destination: WorkoutDetailView(workout:workout),
                     label: {})
             }
         }
