@@ -82,6 +82,8 @@ struct WorkoutRowView: View {
         }
         return timeStampString
     }
+    
+
 }
 //    
 //}
