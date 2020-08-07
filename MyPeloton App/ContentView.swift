@@ -34,9 +34,11 @@ struct ContentView: View {
                                             .resizable()
                                             .cornerRadius(15)
                                             .frame(width: 35, height: 35, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/))
+                    
+                    
             }.onAppear(perform: {
                 decodeJSON()
-                
+                workouts = getWorkoutArrayForTime(pickerSelection: pickerSelectedItem)
             })
         }
     }

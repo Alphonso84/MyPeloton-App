@@ -33,6 +33,7 @@ struct WorkoutRowView: View {
                             .foregroundColor(.blue)
                             .font(.subheadline)
                     }
+                    
                 }
                 
                 NavigationLink(
@@ -40,6 +41,7 @@ struct WorkoutRowView: View {
                     label: {})
             }
         }
+        
     }
     //MARK: String Validation Methods
     
@@ -85,12 +87,9 @@ struct WorkoutRowView: View {
     
 
 }
-//    
-//}
-//
-//
-//struct WorkoutRowView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WorkoutRowView(workouts: .constant(Workouts()))
-//    }
-//}
+  
+struct WorkoutRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        WorkoutRowView(workouts: Workouts())
+    }
+}

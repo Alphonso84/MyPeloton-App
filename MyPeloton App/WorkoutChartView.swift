@@ -11,11 +11,21 @@ struct WorkoutChartView: View {
     @State var pickerSelectedItem = 0
     var body: some View {
         ZStack {
-        Text("Calories Burned")
-            .font(.largeTitle)
-            .fontWeight(.heavy)
             
-           
+            VStack {
+                Text("Workout Stats")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                
+                HStack {
+                    ZStack {
+                        Capsule().frame(width: 30, height: 300)
+                        Capsule().frame(width: 30, height: 100)
+                        foregroundColor(.red)
+                    }
+                }
+                
+            }
         }
     }
 }
