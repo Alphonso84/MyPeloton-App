@@ -15,11 +15,12 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 Picker(selection: $pickerSelectedItem, label: Text(""), content: /*@START_MENU_TOKEN@*/{
-                    Text("20 min").tag(0)
-                    Text("30 min").tag(1)
-                    Text("45 min").tag(2)
-                    Text("60 min").tag(3)
-                    Text("90 min").tag(4)
+                    Text("All").tag(0)
+                    Text("20 min").tag(1)
+                    Text("30 min").tag(2)
+                    Text("45 min").tag(3)
+                    Text("60 min").tag(4)
+                    Text("90 min").tag(5)
                 }/*@END_MENU_TOKEN@*/)
                 .onChange(of: pickerSelectedItem) { value in
                     workouts = getWorkoutArrayForTime(pickerSelection:pickerSelectedItem)
@@ -45,18 +46,21 @@ struct ContentView: View {
     func navigationBarTitleString() -> String {
         var titleString = "All Workouts"
         if  pickerSelectedItem == 0 {
-            titleString = "20 Min Workouts"
+            titleString = "All Workouts"
         }
         if  pickerSelectedItem == 1 {
-            titleString = "30 Min Workouts"
+            titleString = "20 Min Workouts"
         }
         if  pickerSelectedItem == 2 {
-            titleString = "45 Min Workouts"
+            titleString = "30 Min Workouts"
         }
         if  pickerSelectedItem == 3 {
-            titleString = "60 Min Workouts"
+            titleString = "45 Min Workouts"
         }
         if  pickerSelectedItem == 4 {
+            titleString = "60 Min Workouts"
+        }
+        if  pickerSelectedItem == 5 {
             titleString = "90 Min Workouts"
         }
         return titleString
@@ -70,23 +74,27 @@ struct ContentView: View {
         var newWorkoutArray = Workouts()
         
         for workout in workouts {
-            if  pickerSelectedItem == 0 && workout.title.contains("20 min") {
+            if  pickerSelectedItem == 0 {
                 newWorkoutArray.append(workout)
                
             }
-            if  pickerSelectedItem == 1 && workout.title.contains("30 min") {
+            if  pickerSelectedItem == 1 && workout.title.contains("20 min") {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 2 && workout.title.contains("45 min")  {
+            if  pickerSelectedItem == 2 && workout.title.contains("30 min")  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 3 && workout.title.contains("60 min")  {
+            if  pickerSelectedItem == 3 && workout.title.contains("45 min")  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 4 && workout.title.contains("90 min")  {
+            if  pickerSelectedItem == 4 && workout.title.contains("60 min")  {
+                newWorkoutArray.append(workout)
+                
+            }
+            if  pickerSelectedItem == 5 && workout.title.contains("90 min")  {
                 newWorkoutArray.append(workout)
                 
             }
