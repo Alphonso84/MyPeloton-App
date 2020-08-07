@@ -68,7 +68,7 @@ struct ContentView: View {
         return titleString
     }
    
-    //MARK: Workout Array Methods
+    //MARK: Workout Filter Methods
     
     func getWorkoutArrayForTime(pickerSelection: Int) -> Workouts {
         workouts.removeAll()

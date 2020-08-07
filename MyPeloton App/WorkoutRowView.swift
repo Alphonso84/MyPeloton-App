@@ -35,9 +35,10 @@ struct WorkoutRowView: View {
                     }
                     
                 }
+                .shadow(radius: 10)
                 
                 NavigationLink(
-                    destination: WorkoutChartView(),
+                    destination: WorkoutDetailView(),
                     label: {})
             }
         }
@@ -47,7 +48,7 @@ struct WorkoutRowView: View {
     
     func getWorkoutImage(instructorName:String) ->String {
         var imageString = String()
-        if instructorName.isEmpty {
+        if instructorName.isEmpty || instructorName == "Denis & Matt" {
             imageString = "Peloton"
         } else {
             imageString = instructorName

@@ -8,25 +8,47 @@
 import SwiftUI
 
 struct WorkoutChartView: View {
-    @State var pickerSelectedItem = 0
+   // @State var pickerSelectedItem = 0
     var body: some View {
         ZStack {
             
             VStack {
-                Text("Workout Stats")
+                Text("Weekly Calories")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                 
-                HStack {
-                    ZStack {
-                        Capsule().frame(width: 30, height: 300)
-                        Capsule().frame(width: 30, height: 100)
-                        foregroundColor(.red)
-                    }
+                HStack (spacing:10) {
+                    BarView(text: "S", value: 45)
+                    BarView(text: "M", value: 120)
+                    BarView(text: "T", value: 60)
+                    BarView(text: "W", value: 174)
+                    BarView(text: "T", value: 190)
+                    BarView(text: "F", value: 35)
+                    BarView(text: "S", value: 90)
+                  
                 }
                 
             }
         }
+    }
+}
+
+struct BarView: View {
+    var text: String
+    var value: CGFloat
+    var body: some View {
+        VStack {
+            
+        ZStack(alignment:.bottom) {
+            Capsule().frame(width: 0, height: 200)
+                .foregroundColor(.secondary)
+            
+            Capsule().frame(width: 30, height: value)
+                .foregroundColor(.red)
+        }
+            Text("\(text)")
+        }
+        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
     }
 }
 
