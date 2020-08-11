@@ -14,10 +14,8 @@ struct ContentView: View {
         
         NavigationView {
             VStack {
-                PersonalBestView(instructorName: "\(getBestWorkOutFromArray(array: workouts).0)", classTitle: "\(getBestWorkOutTitleFromArray(array:workouts))", caloriesBurned: getBestWorkOutFromArray(array: workouts).1)
-                    .onAppear {
-                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/
-                    }
+                PersonalBestView(instructorName: "\(getBestWorkOutFromArray(array: workouts).0)", classTitle: "\(getBestWorkOutTitleDateFromArray(array:workouts).1)", totalOutput: getBestWorkOutFromArray(array: workouts).1, date:"\(getBestWorkOutTitleDateFromArray(array: workouts).0)")
+                    
                 Picker(selection: $pickerSelectedItem, label: Text(""), content: /*@START_MENU_TOKEN@*/{
                     Text("All").tag(0)
                     Text("20 min").tag(1)
@@ -74,17 +72,18 @@ struct ContentView: View {
     
     //MARK: Workout Filter Methods
     
-    func getBestWorkOutTitleFromArray(array:Workouts) -> String{
+    func getBestWorkOutTitleDateFromArray(array:Workouts) -> (String,String)  {
+        var bestWorkoutDateTitle = ("","")
         var bestWorkoutInfo = Int()
-        var bestWorkoutTitle = String()
         
         for singleWorkout in array {
-            if singleWorkout.caloriesBurned > bestWorkoutInfo {
-                bestWorkoutInfo = singleWorkout.caloriesBurned
-                bestWorkoutTitle = singleWorkout.title
+            if singleWorkout.totalOutput > bestWorkoutInfo {
+                bestWorkoutInfo = singleWorkout.totalOutput
+                bestWorkoutDateTitle.0 = singleWorkout.workoutTimestamp
+                bestWorkoutDateTitle.1 = singleWorkout.title
             }
         }
-        return bestWorkoutTitle
+        return bestWorkoutDateTitle
     }
     
     func getBestWorkOutFromArray(array:Workouts) -> (String,Int){
@@ -92,8 +91,8 @@ struct ContentView: View {
         
         for singleWorkout in array {
             
-            if singleWorkout.caloriesBurned > bestWorkoutInfo.1 {
-                bestWorkoutInfo.1 = singleWorkout.caloriesBurned
+            if singleWorkout.totalOutput > bestWorkoutInfo.1 {
+                bestWorkoutInfo.1 = singleWorkout.totalOutput
                 bestWorkoutInfo.0 = singleWorkout.instructorName
             }
         }

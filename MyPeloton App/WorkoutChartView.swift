@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkoutChartView: View {
     @State var pickerSelectedItem = 0
-    var workouts = Workouts()
+    var workouts: Workouts
     var body: some View {
         ZStack {
             
@@ -46,6 +46,6 @@ struct WorkoutChartView: View {
 
 struct WorkoutChartView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutChartView()
+        WorkoutChartView(workouts: Workouts())
     }
 }

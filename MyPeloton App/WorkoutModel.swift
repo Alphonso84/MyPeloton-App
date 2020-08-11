@@ -14,6 +14,9 @@ import Foundation
     3) Convert to JSON
     https://api.onepeloton.com/api/user/4bb1b0474af0487c9fe211aac7aa0d61/workout_history_json?timezone=America/Detroit
  */
+// MARK: - Workout
+
+
 
 struct Workout: Codable, Equatable, Identifiable, Hashable {
     static func == (lhs: Workout, rhs: Workout) -> Bool {
@@ -26,14 +29,15 @@ struct Workout: Codable, Equatable, Identifiable, Hashable {
     let lengthMinutes: Int
     let fitnessDiscipline: FitnessDiscipline
     let type, title, classTimestamp: String
-    let totalOutput, avgWatts: AvgCadenceRPM
+    let totalOutput: Int
+    let avgWatts: AvgCadenceRPM
     let avgResistance: String
     let avgCadenceRPM: AvgCadenceRPM
     let avgSpeedMph, distanceMi: AvgHeartrate
-    let caloriesBurned: Int
+    let caloriesBurned: Int?
     let avgHeartrate: AvgHeartrate
     let avgIncline, avgPaceMinMi: String
-    
+
     enum CodingKeys: String, CodingKey {
         case workoutTimestamp = "Workout Timestamp"
         case liveOnDemand = "Live/On-Demand"
@@ -58,16 +62,16 @@ struct Workout: Codable, Equatable, Identifiable, Hashable {
 }
 
 enum AvgCadenceRPM: Codable, Hashable {
-    case integer(Double)
-    case string(String?)
+    case integer(Int)
+    case string(String)
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let x = try? container.decode(Double.self) {
+        if let x = try? container.decode(Int.self) {
             self = .integer(x)
             return
         }
-        if let x = try? container.decode(String?.self) {
+        if let x = try? container.decode(String.self) {
             self = .string(x)
             return
         }
@@ -87,7 +91,7 @@ enum AvgCadenceRPM: Codable, Hashable {
 
 enum AvgHeartrate: Codable, Hashable {
     case double(Double)
-    case string(String?)
+    case string(String)
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -95,7 +99,7 @@ enum AvgHeartrate: Codable, Hashable {
             self = .double(x)
             return
         }
-        if let x = try? container.decode(String?.self) {
+        if let x = try? container.decode(String.self) {
             self = .string(x)
             return
         }
@@ -120,6 +124,9 @@ enum FitnessDiscipline: String, Codable {
     case strength = "Strength"
     case stretching = "Stretching"
     case yoga = "Yoga"
+    case meditation = "Meditation"
+    case walking = "Walking"
+    case running = "Running"
 }
 
 enum LiveOnDemand: String, Codable {

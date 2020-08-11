@@ -29,6 +29,7 @@ struct WorkoutRowView: View {
                         Text("\(getWorkoutTitle(title: workout.title))")
                             .foregroundColor(.gray)
                             .font(.subheadline)
+                        Text("Total Output \(workout.totalOutput)")
                         Text("\(getWorkoutTimeStamp(timeStamp: workout.workoutTimestamp))")
                             .foregroundColor(.blue)
                             .font(.subheadline)
@@ -38,7 +39,7 @@ struct WorkoutRowView: View {
                 .shadow(radius: 10)
                 
                 NavigationLink(
-                    destination: WorkoutDetailView(workout:workout),
+                    destination: WorkoutDetailView(workout: workout),
                     label: {})
             }
         }

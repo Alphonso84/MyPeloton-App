@@ -10,7 +10,10 @@ import SwiftUI
 struct PersonalBestView: View {
     var instructorName = String()
     var classTitle = String()
-    var caloriesBurned = Int()
+    var totalOutput = Int()
+    var date = String()
+    var formattedDate: Date?
+    let dateFormatter = DateFormatter()
     var body: some View {
         VStack {
         Text("Personal Best Workout")
@@ -20,8 +23,9 @@ struct PersonalBestView: View {
                 .resizable().frame(width: 60, height: 90, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .cornerRadius(20)
             Text("\(classTitle)")
-            Text("\(caloriesBurned) Calories Burned")
-       
+            Text("\(totalOutput) Total Output")
+            Text("Date: \(date)")
+                .foregroundColor(.blue)
         }
     }
 }
