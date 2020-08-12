@@ -12,9 +12,9 @@ struct WorkoutChartView: View {
     
     var body: some View {
         ScrollView(.horizontal){
-                HStack (spacing:10) {
+                HStack (spacing:2) {
                     ForEach(workouts, id:\.totalOutput) { workout in
-                        WorkoutBarView(text:String(workout.totalOutput),maxWorkoutOutput:CGFloat(getBestWorkOutFromArray(array: workouts).1) * 0.2, workoutOutput:CGFloat(workout.totalOutput) * 0.1)
+                        WorkoutBarView(text:String(workout.totalOutput),maxWorkoutOutput:CGFloat(getBestWorkOutFromArray(array: workouts).1) * 0.2, workoutOutput:CGFloat(workout.totalOutput) * 0.2)
                             
                 }
             }
