@@ -109,27 +109,27 @@ struct ContentView: View {
         var newWorkoutArray = Workouts()
         
         for workout in workouts {
-            if  pickerSelectedItem == 0 && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 0 && workout.totalOutput > 50 && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up")  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 1 && workout.title.contains("20 min") && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 1 && workout.title.contains("20 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && workout.totalOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 2 && workout.title.contains("30 min") && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 2 && workout.title.contains("30 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && workout.totalOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 3 && workout.title.contains("45 min") && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 3 && workout.title.contains("45 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && workout.totalOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 4 && workout.title.contains("60 min") && workout.totalOutput > 50   {
+            if  pickerSelectedItem == 4 && workout.title.contains("60 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && workout.totalOutput > 50   {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 5 && workout.title.contains("90 min") && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 5 && workout.title.contains("90 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && workout.totalOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }

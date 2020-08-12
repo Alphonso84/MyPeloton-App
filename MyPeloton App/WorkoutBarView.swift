@@ -17,7 +17,7 @@ struct WorkoutBarView: View {
             
             ZStack(alignment:.bottom) {
                 Capsule().frame(width: 30, height: maxWorkoutOutput)
-                    .animation(.default)
+                    //.animation(.default)
                     .foregroundColor(.secondary)
                 
                 Capsule().frame(width: 30, height: workoutOutput)
