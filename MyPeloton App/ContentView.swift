@@ -10,11 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @State var workouts = Workouts()
     @State var pickerSelectedItem = Int()
+    @State var firstPickerSelection = Int()
     var body: some View {
         
         NavigationView {
             VStack {
-                PersonalBestView(instructorName: "\(getBestWorkOutFromArray(array: workouts).0)", classTitle: "\(getBestWorkOutTitleDateFromArray(array:workouts).1)", totalOutput: getBestWorkOutFromArray(array: workouts).1, date:"\(getBestWorkOutTitleDateFromArray(array: workouts).0)")
+               
+                WorkoutChartView(workouts: workouts) .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+               
+//                PersonalBestView(instructorName: "\(getBestWorkOutFromArray(array: workouts).0)", classTitle: "\(getBestWorkOutTitleDateFromArray(array:workouts).1)", totalOutput: getBestWorkOutFromArray(array: workouts).1, date:"\(getBestWorkOutTitleDateFromArray(array: workouts).0)")
                     
                 Picker(selection: $pickerSelectedItem, label: Text(""), content: /*@START_MENU_TOKEN@*/{
                     Text("All").tag(0)
@@ -29,7 +33,7 @@ struct ContentView: View {
                 }
                 .padding(.top, 10)
                 .pickerStyle(SegmentedPickerStyle())
-                
+               
                 WorkoutRowView(workouts: workouts)
                     .navigationBarTitle("\(navigationBarTitleString())", displayMode:.inline)
                     .navigationBarItems(leading: Image("Peloton")
@@ -72,7 +76,7 @@ struct ContentView: View {
     
     //MARK: Workout Filter Methods
     
-    func getBestWorkOutTitleDateFromArray(array:Workouts) -> (String,String)  {
+     func getBestWorkOutTitleDateFromArray(array:Workouts) -> (String,String)  {
         var bestWorkoutDateTitle = ("","")
         var bestWorkoutInfo = Int()
         
@@ -105,27 +109,27 @@ struct ContentView: View {
         var newWorkoutArray = Workouts()
         
         for workout in workouts {
-            if  pickerSelectedItem == 0 {
+            if  pickerSelectedItem == 0 && workout.totalOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 1 && workout.title.contains("20 min") {
+            if  pickerSelectedItem == 1 && workout.title.contains("20 min") && workout.totalOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 2 && workout.title.contains("30 min")  {
+            if  pickerSelectedItem == 2 && workout.title.contains("30 min") && workout.totalOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 3 && workout.title.contains("45 min")  {
+            if  pickerSelectedItem == 3 && workout.title.contains("45 min") && workout.totalOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 4 && workout.title.contains("60 min")  {
+            if  pickerSelectedItem == 4 && workout.title.contains("60 min") && workout.totalOutput > 50   {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 5 && workout.title.contains("90 min")  {
+            if  pickerSelectedItem == 5 && workout.title.contains("90 min") && workout.totalOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }

@@ -29,7 +29,7 @@ struct Workout: Codable, Equatable, Identifiable, Hashable {
     let lengthMinutes: Int
     let fitnessDiscipline: FitnessDiscipline
     let type, title, classTimestamp: String
-    let totalOutput: Int
+    var totalOutput: Int
     let avgWatts: AvgCadenceRPM
     let avgResistance: String
     let avgCadenceRPM: AvgCadenceRPM
