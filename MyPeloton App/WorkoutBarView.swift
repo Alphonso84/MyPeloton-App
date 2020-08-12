@@ -24,6 +24,10 @@ struct WorkoutBarView: View {
                     .animation(.default)
                     .foregroundColor(.red)
             }
+            .onTapGesture {
+                
+            }
+            .shadow(radius: 5)
             Text("\(text)")
         }
     }

@@ -17,9 +17,7 @@ struct ContentView: View {
             VStack {
                
                 WorkoutChartView(workouts: workouts) .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-               
-//                PersonalBestView(instructorName: "\(getBestWorkOutFromArray(array: workouts).0)", classTitle: "\(getBestWorkOutTitleDateFromArray(array:workouts).1)", totalOutput: getBestWorkOutFromArray(array: workouts).1, date:"\(getBestWorkOutTitleDateFromArray(array: workouts).0)")
-                    
+            
                 Picker(selection: $pickerSelectedItem, label: Text(""), content: /*@START_MENU_TOKEN@*/{
                     Text("All").tag(0)
                     Text("20 min").tag(1)

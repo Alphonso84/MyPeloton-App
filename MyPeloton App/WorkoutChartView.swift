@@ -11,6 +11,8 @@ struct WorkoutChartView: View {
     var workouts: Workouts
     
     var body: some View {
+        VStack {
+            Text("Output")
         ScrollView(.horizontal){
             HStack (spacing:3) {
                     ForEach(workouts, id:\.totalOutput) { workout in
@@ -19,6 +21,7 @@ struct WorkoutChartView: View {
                 }
                     .animation(.default)
             }
+        }
         }
     }
     
