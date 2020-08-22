@@ -43,7 +43,6 @@ struct WorkoutRowView: View {
                     label: {})
             }
         }
-        
     }
     //MARK: String Validation Methods
     

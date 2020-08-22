@@ -9,20 +9,33 @@ import SwiftUI
 
 struct WorkoutChartView: View {
     var workouts: Workouts
-    
     var body: some View {
         VStack {
             Text("Output")
             ScrollView(.horizontal){
-                HStack (spacing:3) {
+                HStack (spacing:spacingForArraySize(array: workouts)) {
                     ForEach(workouts, id:\.totalOutput) { workout in
-                        WorkoutBarView(text:String(workout.totalOutput),maxWorkoutOutput:CGFloat(getBestWorkOutFromArray(array: workouts).1) * 0.2, workoutOutput:CGFloat(workout.totalOutput) * 0.2).animation((Animation.easeIn(duration: 0.5).delay(1)).delay(1))
+                        WorkoutBarView(text:String(workout.totalOutput),maxWorkoutOutput:CGFloat(getBestWorkOutFromArray(array: workouts).1) * 0.2, workoutOutput:CGFloat(workout.totalOutput) * 0.2)
                         
                     }
-                    
                 }
             }
         }
+    }
+    
+    func spacingForArraySize(array:Workouts) -> CGFloat {
+        var spacing = Int()
+        let arraySize = array.count
+        
+        if arraySize < 10 {
+            spacing = Int(CGFloat(50))
+        } else if arraySize < 20 {
+            spacing = Int(CGFloat(10))
+        } else {
+            spacing = Int(CGFloat(3))
+        }
+        
+        return CGFloat(spacing)
     }
     
     func getBestWorkOutFromArray(array:Workouts) -> (String,Int){

@@ -17,16 +17,13 @@ struct WorkoutBarView: View {
             
             ZStack(alignment:.bottom) {
                 Capsule().frame(width: 30, height: maxWorkoutOutput)
-                    //.animation(.default)
                     .foregroundColor(.secondary)
                 
                 Capsule().frame(width: 30, height: workoutOutput)
                     
                     .foregroundColor(.red)
             }
-            .onTapGesture {
-                
-            }
+            .animation((Animation.easeIn(duration: 0.5).delay(0)).delay(0))
             .shadow(radius: 5)
             Text("\(text)")
         }

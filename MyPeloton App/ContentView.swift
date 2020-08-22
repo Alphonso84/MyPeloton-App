@@ -26,6 +26,7 @@ struct ContentView: View {
                 
                 if pickerViewChooser == 0 {
                     WorkoutChartView(workouts: workouts) .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        
                 } else {
                 PersonalBestView(instructorName: getBestWorkOutFromArray(array: workouts).0, classTitle: getBestWorkOutTitleDateFromArray(array: workouts).1, totalOutput: getBestWorkOutFromArray(array: workouts).1, date: getBestWorkOutTitleDateFromArray(array: workouts).0)
                 }
