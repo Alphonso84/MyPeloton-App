@@ -21,7 +21,7 @@ struct WorkoutBarView: View {
                     .foregroundColor(.secondary)
                 
                 Capsule().frame(width: 30, height: workoutOutput)
-                    .animation(.default)
+                    
                     .foregroundColor(.red)
             }
             .onTapGesture {

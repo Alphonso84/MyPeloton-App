@@ -13,15 +13,15 @@ struct WorkoutChartView: View {
     var body: some View {
         VStack {
             Text("Output")
-        ScrollView(.horizontal){
-            HStack (spacing:3) {
+            ScrollView(.horizontal){
+                HStack (spacing:3) {
                     ForEach(workouts, id:\.totalOutput) { workout in
-                        WorkoutBarView(text:String(workout.totalOutput),maxWorkoutOutput:CGFloat(getBestWorkOutFromArray(array: workouts).1) * 0.2, workoutOutput:CGFloat(workout.totalOutput) * 0.2)
-                            
+                        WorkoutBarView(text:String(workout.totalOutput),maxWorkoutOutput:CGFloat(getBestWorkOutFromArray(array: workouts).1) * 0.2, workoutOutput:CGFloat(workout.totalOutput) * 0.2).animation((Animation.easeIn(duration: 0.5).delay(1)).delay(1))
+                        
+                    }
+                    
                 }
-                    .animation(.default)
             }
-        }
         }
     }
     
