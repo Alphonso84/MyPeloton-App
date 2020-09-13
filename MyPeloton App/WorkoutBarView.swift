@@ -11,6 +11,7 @@ struct WorkoutBarView: View {
     var text: String
     var maxWorkoutOutput: CGFloat
     var workoutOutput: CGFloat
+    @State var animate = false
    
     var body: some View {
         VStack{
@@ -19,11 +20,10 @@ struct WorkoutBarView: View {
                 Capsule().frame(width: 30, height: maxWorkoutOutput)
                     .foregroundColor(.secondary)
                 
-                Capsule().frame(width: 30, height: workoutOutput)
-                    
+                Capsule().frame(width: 30, height:workoutOutput)
                     .foregroundColor(.red)
             }
-            .animation((Animation.easeIn(duration: 0.5).delay(0)).delay(0))
+            .animation((Animation.easeIn(duration: 3).delay(0)).delay(0))
             .shadow(radius: 5)
             Text("\(text)")
         }
