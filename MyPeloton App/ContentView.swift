@@ -33,7 +33,7 @@ struct ContentView: View {
                 
                 Picker(selection: $pickerSelectedItem, label: Text(""), content: /*@START_MENU_TOKEN@*/{
                     Text("All").tag(0)
-                    Text("10 min").tag(1)
+                    Text("15 min").tag(1)
                     Text("20 min").tag(2)
                     Text("30 min").tag(3)
                     Text("45 min").tag(4)
@@ -69,7 +69,7 @@ struct ContentView: View {
             titleString = "All Workouts"
         }
         if pickerSelectedItem == 1 {
-            titleString = "10 Min Workouts"
+            titleString = "15 Min Workouts"
         }
         if  pickerSelectedItem == 2 {
             titleString = "20 Min Workouts"
@@ -128,7 +128,7 @@ struct ContentView: View {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 1 && workout.title.contains("10 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && !workout.title.contains("Just Ride") && !workout.title.contains("Scenic Ride") && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 1 && workout.title.contains("15 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && !workout.title.contains("Just Ride") && !workout.title.contains("Scenic Ride") && workout.totalOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }

@@ -15,13 +15,14 @@ struct WorkoutChartView: View {
             ScrollView(.horizontal){
                 HStack (spacing:spacingForArraySize(array: workouts)) {
                     ForEach(workouts, id:\.totalOutput) { workout in
-                        WorkoutBarView(text:String(workout.totalOutput),maxWorkoutOutput:CGFloat(getBestWorkOutFromArray(array: workouts).1) * 0.2, workoutOutput:CGFloat(workout.totalOutput) * 0.2)
+                        WorkoutBarView(text:String(workout.totalOutput),maxWorkoutOutput:CGFloat(getBestWorkOutFromArray(array: workouts).1), workoutOutput:CGFloat(workout.totalOutput), workoutDate:String(workout.workoutTimestamp))
                         
                     }
                 }
             }
         }
     }
+    
     
     func spacingForArraySize(array:Workouts) -> CGFloat {
         var spacing = Int()

@@ -14,9 +14,6 @@ struct WorkoutDetailView: View {
             Image("\(workout.instructorName)")
                 .resizable()
                 .frame(width: 150, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    
-            //Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            //Text("Average Speed MPH \(workout)")
             Text("Average Resistance \(workout.avgResistance)")
             Text("Calories Burned \(workout.caloriesBurned!)")
             Text("Total Output \(workout.totalOutput)")
