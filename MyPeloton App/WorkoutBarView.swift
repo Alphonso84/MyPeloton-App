@@ -18,14 +18,15 @@ struct WorkoutBarView: View {
     var body: some View {
         VStack{
             ZStack(alignment:.bottom) {
-                if barWasTapped {
-                    Text("\(showClassOutputAndDate())")
-                }
                 Capsule().frame(width: 30, height:200)
                     .foregroundColor(.secondary)
                 Capsule().frame(width: 30, height:barViewScaledHeightFor(outPut: CGFloat(workoutOutput)))
                     .foregroundColor(.red)
                     .animation((Animation.default))
+//Conditionally show Text if bar is tapped. 
+//                if barWasTapped {
+//                    Text("\(showClassOutputAndDate())")
+//                }
             }
             .shadow(radius: 5)
             Text("\(text)")
