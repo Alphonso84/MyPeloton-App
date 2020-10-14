@@ -34,10 +34,7 @@ struct WorkoutRowView: View {
                             .foregroundColor(.blue)
                             .font(.subheadline)
                     }
-                    
                 }
-                
-                
                 NavigationLink(
                     destination: WorkoutDetailView(workout: workout),
                     label: {})
@@ -85,8 +82,6 @@ struct WorkoutRowView: View {
         }
         return timeStampString
     }
-    
-
 }
   
 struct WorkoutRowView_Previews: PreviewProvider {

@@ -11,6 +11,7 @@ var barWasTapped = Bool()
 
 struct WorkoutBarView: View {
     var text: String
+    @State var animate = false
     var maxWorkoutOutput: CGFloat
     var workoutOutput: CGFloat
     var workoutDate: String
@@ -20,14 +21,13 @@ struct WorkoutBarView: View {
             ZStack(alignment:.bottom) {
                 Capsule().frame(width: 30, height:200)
                     .foregroundColor(.secondary)
-                Capsule().frame(width: 30, height:barViewScaledHeightFor(outPut: CGFloat(workoutOutput)))
+                Capsule().frame(width: 30, height:self.animate ? barViewScaledHeightFor(outPut: CGFloat(workoutOutput)): 20)
                     .foregroundColor(.red)
-                    .animation((Animation.default))
-//Conditionally show Text if bar is tapped. 
-//                if barWasTapped {
-//                    Text("\(showClassOutputAndDate())")
-//                }
+                    .animation(.easeIn)
             }
+            .onAppear(perform: {
+                self.animate.toggle()
+            })
             .shadow(radius: 5)
             Text("\(text)")
         }.onTapGesture {

@@ -18,10 +18,10 @@ struct ContentView: View {
             VStack {
                 
                 Picker(selection: $pickerViewChooser, label: Text(""), content:
-                /*@START_MENU_TOKEN@*/{
+                {
                     Text("Chart View").tag(0)
                     Text("Personal Best View").tag(1)
-                }/*@END_MENU_TOKEN@*/)
+                })
                     .pickerStyle(SegmentedPickerStyle())
                 
                 if pickerViewChooser == 0 {
@@ -31,7 +31,7 @@ struct ContentView: View {
                 PersonalBestView(instructorName: getBestWorkOutFromArray(array: workouts).0, classTitle: getBestWorkOutTitleDateFromArray(array: workouts).1, totalOutput: getBestWorkOutFromArray(array: workouts).1, date: getBestWorkOutTitleDateFromArray(array: workouts).0)
                 }
                 
-                Picker(selection: $pickerSelectedItem, label: Text(""), content: /*@START_MENU_TOKEN@*/{
+                Picker(selection: $pickerSelectedItem, label: Text(""), content:{
                     Text("All").tag(0)
                     Text("15 min").tag(1)
                     Text("20 min").tag(2)
@@ -39,7 +39,7 @@ struct ContentView: View {
                     Text("45 min").tag(4)
                     Text("60 min").tag(5)
                     Text("90 min").tag(6)
-                }/*@END_MENU_TOKEN@*/)
+                })
                 .onChange(of: pickerSelectedItem) { value in
                     workouts = getWorkoutArrayForTime(pickerSelection:pickerSelectedItem)
                 }
@@ -52,8 +52,6 @@ struct ContentView: View {
                                             .resizable()
                                             .cornerRadius(15)
                                             .frame(width: 35, height: 35, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/))
-                
-                
             }.onAppear(perform: {
                 decodeJSON()
                 workouts = getWorkoutArrayForTime(pickerSelection: pickerSelectedItem)
