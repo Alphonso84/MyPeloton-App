@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var workouts = Workouts()
-    @State var pickerViewChooser = Int()
-    @State var pickerSelectedItem = Int()
-    @State var firstPickerSelection = Int()
+    @State private var workouts = Workouts()
+    @State private var pickerViewChooser = Int()
+    @State private var pickerSelectedItem = Int()
+    @State private var firstPickerSelection = Int()
     var body: some View {
         
         NavigationView {
