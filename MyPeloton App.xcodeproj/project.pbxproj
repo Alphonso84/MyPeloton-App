@@ -13,12 +13,12 @@
 		D029769924CCE18900D48AA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D029769824CCE18900D48AA0 /* Preview Assets.xcassets */; };
 		D02976A124CCE1D300D48AA0 /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02976A024CCE1D300D48AA0 /* WorkoutModel.swift */; };
 		D02976A524CCE70300D48AA0 /* WorkoutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02976A424CCE70300D48AA0 /* WorkoutRowView.swift */; };
-		D02976A724CF166400D48AA0 /* WorkoutData.json in Resources */ = {isa = PBXBuildFile; fileRef = D02976A624CF166400D48AA0 /* WorkoutData.json */; };
 		D0644C4B24DC64F900B48A96 /* WorkoutChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0644C4A24DC64F900B48A96 /* WorkoutChartView.swift */; };
 		D0644C4D24DDC1F600B48A96 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0644C4C24DDC1F600B48A96 /* WorkoutDetailView.swift */; };
 		D0644C4F24DE0BE500B48A96 /* WorkoutBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0644C4E24DE0BE400B48A96 /* WorkoutBarView.swift */; };
 		D0644C5124DE0F4D00B48A96 /* PersonalBestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0644C5024DE0F4D00B48A96 /* PersonalBestView.swift */; };
 		D0644C5324E0BE5200B48A96 /* ChelseaData.json in Resources */ = {isa = PBXBuildFile; fileRef = D0644C5224E0BE5100B48A96 /* ChelseaData.json */; };
+		D0A600C9273B425100387AE7 /* WorkoutData.json in Resources */ = {isa = PBXBuildFile; fileRef = D0A600C8273B425100387AE7 /* WorkoutData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +30,12 @@
 		D029769A24CCE18900D48AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D02976A024CCE1D300D48AA0 /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
 		D02976A424CCE70300D48AA0 /* WorkoutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRowView.swift; sourceTree = "<group>"; };
-		D02976A624CF166400D48AA0 /* WorkoutData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = WorkoutData.json; path = ../../../../../Downloads/WorkoutData.json; sourceTree = "<group>"; };
 		D0644C4A24DC64F900B48A96 /* WorkoutChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutChartView.swift; sourceTree = "<group>"; };
 		D0644C4C24DDC1F600B48A96 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
 		D0644C4E24DE0BE400B48A96 /* WorkoutBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutBarView.swift; sourceTree = "<group>"; };
 		D0644C5024DE0F4D00B48A96 /* PersonalBestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalBestView.swift; sourceTree = "<group>"; };
 		D0644C5224E0BE5100B48A96 /* ChelseaData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ChelseaData.json; sourceTree = "<group>"; };
+		D0A600C8273B425100387AE7 /* WorkoutData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WorkoutData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 				D0644C5024DE0F4D00B48A96 /* PersonalBestView.swift */,
 				D0644C4C24DDC1F600B48A96 /* WorkoutDetailView.swift */,
 				D02976A024CCE1D300D48AA0 /* WorkoutModel.swift */,
-				D02976A624CF166400D48AA0 /* WorkoutData.json */,
+				D0A600C8273B425100387AE7 /* WorkoutData.json */,
 				D0644C5224E0BE5100B48A96 /* ChelseaData.json */,
 				D029769524CCE18900D48AA0 /* Assets.xcassets */,
 				D029769A24CCE18900D48AA0 /* Info.plist */,
@@ -151,8 +151,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D029769924CCE18900D48AA0 /* Preview Assets.xcassets in Resources */,
+				D0A600C9273B425100387AE7 /* WorkoutData.json in Resources */,
 				D029769624CCE18900D48AA0 /* Assets.xcassets in Resources */,
-				D02976A724CF166400D48AA0 /* WorkoutData.json in Resources */,
 				D0644C5324E0BE5200B48A96 /* ChelseaData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
