@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import Charts
+
+
 
 struct ContentView: View {
     @State private var workouts = Workouts()
