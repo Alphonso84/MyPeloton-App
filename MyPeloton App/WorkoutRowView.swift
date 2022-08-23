@@ -17,20 +17,20 @@ struct WorkoutRowView: View {
         List(workouts, id: \.workoutTimestamp) { workout in
             ZStack(alignment: .leading) {
                 HStack {
-                    Image("\(getWorkoutImage(instructorName: workout.instructorName))")
+                    Image("\(getWorkoutImage(instructorName: workout.instructorName ?? ""))")
                         .resizable()
                         .frame(width: 59, height: 70)
                         .cornerRadius(40)
                     VStack(alignment:.leading) {
-                        Text("\(getWorkoutInstructorName(name:workout.instructorName))")
+                        Text("\(getWorkoutInstructorName(name:workout.instructorName ?? ""))")
                             .font(.title)
                         Text("\(workout.fitnessDiscipline.rawValue)")
                             .foregroundColor(.gray)
-                        Text("\(getWorkoutTitle(title: workout.title))")
+                        Text("\(getWorkoutTitle(title: workout.title ?? ""))")
                             .foregroundColor(.gray)
                             .font(.subheadline)
-                        Text("Total Output \(workout.totalOutput)")
-                        Text("\(getWorkoutTimeStamp(timeStamp: workout.workoutTimestamp))")
+//                        Text("Total Output \(workout.totalOutput)")
+                        Text("\(getWorkoutTimeStamp(timeStamp: workout.workoutTimestamp ?? ""))")
                             .foregroundColor(.blue)
                             .font(.subheadline)
                     }

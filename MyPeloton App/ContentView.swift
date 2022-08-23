@@ -97,10 +97,11 @@ struct ContentView: View {
         var bestWorkoutInfo = Int()
         
         for singleWorkout in array {
-            if singleWorkout.totalOutput > bestWorkoutInfo {
-                bestWorkoutInfo = singleWorkout.totalOutput
-                bestWorkoutDateTitle.0 = singleWorkout.workoutTimestamp
-                bestWorkoutDateTitle.1 = singleWorkout.title
+            guard let workoutOutput = singleWorkout.totalOutput, let workoutTimestamp = singleWorkout.workoutTimestamp, let workoutTitle = singleWorkout.title else {return ("","")}
+            if workoutOutput > bestWorkoutInfo {
+                bestWorkoutInfo = workoutOutput
+                bestWorkoutDateTitle.0 = workoutTimestamp
+                bestWorkoutDateTitle.1 = workoutTitle
             }
         }
         return bestWorkoutDateTitle
@@ -110,10 +111,10 @@ struct ContentView: View {
         var bestWorkoutInfo = ("",0)
         
         for singleWorkout in array {
-            
-            if singleWorkout.totalOutput > bestWorkoutInfo.1 {
-                bestWorkoutInfo.1 = singleWorkout.totalOutput
-                bestWorkoutInfo.0 = singleWorkout.instructorName
+            guard let singleWorkoutOutput = singleWorkout.totalOutput, let instructorName = singleWorkout.instructorName else {return ("",0)}
+            if singleWorkoutOutput > bestWorkoutInfo.1 {
+                bestWorkoutInfo.1 = singleWorkoutOutput
+                bestWorkoutInfo.0 = instructorName
             }
         }
         return bestWorkoutInfo
@@ -125,31 +126,32 @@ struct ContentView: View {
         var newWorkoutArray = Workouts()
         
         for workout in workouts {
-            if  pickerSelectedItem == 0 && workout.totalOutput > 50 && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && !workout.title.contains("Just Ride") && !workout.title.contains("Scenic Ride") {
+            guard let workoutTitle = workout.title, let workoutOutput = workout.totalOutput else {return Workouts()}
+            if  pickerSelectedItem == 0 && workout.totalOutput ?? 0 > 50 && !workoutTitle.contains("Low Impact") && !workoutTitle.contains("Cool Down") && !workoutTitle.contains("Warm Up") && !workoutTitle.contains("Just Ride") && !workoutTitle.contains("Scenic Ride") {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 1 && workout.title.contains("15 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && !workout.title.contains("Just Ride") && !workout.title.contains("Scenic Ride") && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 1 && workoutTitle.contains("15 min") && !workoutTitle.contains("Low Impact") && !workoutTitle.contains("Cool Down") && !workoutTitle.contains("Warm Up") && !workoutTitle.contains("Just Ride") && !workoutTitle.contains("Scenic Ride") && workoutOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 2 && workout.title.contains("20 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && !workout.title.contains("Just Ride") && !workout.title.contains("Scenic Ride") && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 2 && workoutTitle.contains("20 min") && !workoutTitle.contains("Low Impact") && !workoutTitle.contains("Cool Down") && !workoutTitle.contains("Warm Up") && !workoutTitle.contains("Just Ride") && !workoutTitle.contains("Scenic Ride") && workoutOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 3 && workout.title.contains("30 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && !workout.title.contains("Just Ride") && !workout.title.contains("Scenic Ride") && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 3 && workoutTitle.contains("30 min") && !workoutTitle.contains("Low Impact") && !workoutTitle.contains("Cool Down") && !workoutTitle.contains("Warm Up") && !workoutTitle.contains("Just Ride") && !workoutTitle.contains("Scenic Ride") && workoutOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 4 && workout.title.contains("45 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && !workout.title.contains("Just Ride") && !workout.title.contains("Scenic Ride") && workout.totalOutput > 50   {
+            if  pickerSelectedItem == 4 && workoutTitle.contains("45 min") && !workoutTitle.contains("Low Impact") && !workoutTitle.contains("Cool Down") && !workoutTitle.contains("Warm Up") && !workoutTitle.contains("Just Ride") && !workoutTitle.contains("Scenic Ride") && workoutOutput > 50   {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 5 && workout.title.contains("60 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && !workout.title.contains("Just Ride") && !workout.title.contains("Scenic Ride") && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 5 && workoutTitle.contains("60 min") && !workoutTitle.contains("Low Impact") && !workoutTitle.contains("Cool Down") && !workoutTitle.contains("Warm Up") && !workoutTitle.contains("Just Ride") && !workoutTitle.contains("Scenic Ride") && workoutOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }
-            if  pickerSelectedItem == 6 && workout.title.contains("90 min") && !workout.title.contains("Low Impact") && !workout.title.contains("Cool Down") && !workout.title.contains("Warm Up") && !workout.title.contains("Just Ride") && !workout.title.contains("Scenic Ride") && workout.totalOutput > 50  {
+            if  pickerSelectedItem == 6 && workoutTitle.contains("90 min") && !workoutTitle.contains("Low Impact") && !workoutTitle.contains("Cool Down") && !workoutTitle.contains("Warm Up") && !workoutTitle.contains("Just Ride") && !workoutTitle.contains("Scenic Ride") && workoutOutput > 50  {
                 newWorkoutArray.append(workout)
                 
             }

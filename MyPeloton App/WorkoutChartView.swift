@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct WorkoutChartView: View {
     var workouts: Workouts
@@ -13,9 +14,12 @@ struct WorkoutChartView: View {
         VStack {
             Text("Output")
             ScrollView(.horizontal){
-                HStack (spacing:spacingForArraySize(array: workouts)) {
+                HStack  {
                     ForEach(workouts, id:\.totalOutput) { workout in
-                        WorkoutBarView(text:String(workout.totalOutput),maxWorkoutOutput:CGFloat(getBestWorkOutFromArray(array: workouts).1), workoutOutput:CGFloat(workout.totalOutput), workoutDate:String(workout.workoutTimestamp))
+                        Chart {
+                            BarMark(x: .value("Name", "Workout"),y: .value("Time",1))
+                            BarMark(x: .value("Name", "Workout 2"),y: .value("Time",5))
+                        }
                         
                     }
                 }
@@ -44,9 +48,9 @@ struct WorkoutChartView: View {
         
         for singleWorkout in array {
             
-            if singleWorkout.totalOutput > bestWorkoutInfo.1 {
-                bestWorkoutInfo.1 = singleWorkout.totalOutput
-                bestWorkoutInfo.0 = singleWorkout.instructorName
+            if singleWorkout.totalOutput ?? 0 > bestWorkoutInfo.1 {
+                bestWorkoutInfo.1 = singleWorkout.totalOutput ?? 0
+                bestWorkoutInfo.0 = singleWorkout.instructorName ?? ""
             }
         }
         return bestWorkoutInfo
@@ -56,6 +60,6 @@ struct WorkoutChartView: View {
 
 struct WorkoutChartView_Previews: PreviewProvider {
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        WorkoutChartView(workouts: Workouts()).previewDevice("iPhone 11 Pro")
     }
 }

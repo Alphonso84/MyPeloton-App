@@ -23,24 +23,24 @@ struct Workout: Codable, Equatable, Identifiable, Hashable {
         return true
     }
     var id: UUID?
-    let workoutTimestamp: String
-    let liveOnDemand: LiveOnDemand
-    let instructorName: String
-    let lengthMinutes: Int
+    let workoutTimestamp: String?
+    let liveOnDemand: [String: String]
+    let instructorName: String?
+    let lengthMinutes: Int?
     let fitnessDiscipline: FitnessDiscipline
-    let type, title, classTimestamp: String
-    var totalOutput: Int
+    let type, title, classTimestamp: String?
+    var totalOutput: Int?
     let avgWatts: AvgCadenceRPM
-    let avgResistance: String
+    let avgResistance: String?
     let avgCadenceRPM: AvgCadenceRPM
-    let avgSpeedMph, distanceMi: AvgHeartrate
+    let avgSpeedMph, distanceMi: String?
     let caloriesBurned: Int?
-    let avgHeartrate: AvgHeartrate
-    let avgIncline, avgPaceMinMi: String
+    let avgHeartrate: String?
+    let avgIncline, avgPaceMinMi: String?
 
     enum CodingKeys: String, CodingKey {
         case workoutTimestamp = "Workout Timestamp"
-        case liveOnDemand = "Live/On-Demand"
+        case liveOnDemand = "Live"
         case instructorName = "Instructor Name"
         case lengthMinutes = "Length (minutes)"
         case fitnessDiscipline = "Fitness Discipline"
@@ -129,11 +129,11 @@ enum FitnessDiscipline: String, Codable {
     case running = "Running"
 }
 
-enum LiveOnDemand: String, Codable {
-    case empty = ""
-    case live = "Live"
-    case onDemand = "On Demand"
-}
+//enum LiveOnDemand: String, Codable {
+//    case empty = ""
+//    case live = "Live"
+//    case onDemand = "On Demand"
+//}
 
 typealias Workouts = [Workout]
 typealias MyWorkout = Workout
